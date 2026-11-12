@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Smart Home — 2340 × 1080</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Menu principal">
+      <div class="sidebar-profile" aria-label="Perfil">
+        <div class="profile-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.7-4 3.2-6 7.5-6s6.8 2 7.5 6"/></svg>
+        </div>
+        <span class="profile-greeting">Lucas</span>
+      </div>
+      <button class="nav-btn active" data-screen="home" aria-label="Home" title="Home">
+        <svg viewBox="0 0 24 24"><path d="M12 3 2 11h2v10h6v-6h4v6h6V11h2z"/></svg>
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-btn" data-screen="lighting" aria-label="Iluminação" title="Iluminação">
+        <svg viewBox="0 0 24 24"><path d="M9 21h6v-1H9zm3-20a7 7 0 0 0-4 12.7c.6.4 1 1 1 1.8V17h6v-1.5c0-.8.4-1.4 1-1.8A7 7 0 0 0 12 1m-3 17h6v-1H9z"/></svg>
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-btn" data-screen="music" aria-label="Música" title="Música">
+        <svg viewBox="0 0 24 24"><path d="M12 3v12.2a3.8 3.8 0 1 1-2-3.4V6l10-2v9.2a3.8 3.8 0 1 1-2-3.4V2z"/></svg>
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-btn" data-screen="settings" aria-label="Configurações" title="Configurações">
+        <svg viewBox="0 0 24 24"><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2-1.5-2-3.4-2.4 1a8 8 0 0 0-1.7-1L15 3h-4l-.4 3.1a8 8 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 2l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 1.7 1L11 21h4l.4-3.1a8 8 0 0 0 1.7-1l2.4 1 2-3.4zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7"/></svg>
+      </button>
+    </aside>
+    <main>
+      <section class="screen active" id="home">
+        <div class="home-layout">
+          <section class="home-panel">
+            <div class="heading"><span class="heading-mark"></span><div><h1>Iluminação</h1><p>Controle as luzes do quarto</p></div></div>
+            <div class="bulb-wrap" id="home-bulb">
+              <svg viewBox="0 0 100 130" aria-label="Lâmpada do quarto">
+                <g class="bulb-rays">
+                  <path d="M50 0V-9M17 14 10 7M83 14l7-7M4 48H-6M96 48h10M17 82l-7 7M83 82l7 7"/>
+                </g>
+                <path class="bulb-glass" d="M50 5C26 5 8 23 8 47c0 16 8 26 18 36 5 5 7 10 7 17h34c0-7 2-12 7-17 10-10 18-20 18-36C92 23 74 5 50 5Z"/>
+                <path d="M34 108h32M37 118h26M42 127h16"/>
+              </svg>
+            </div>
+            <div class="room-select">Quarto</div>
+            <div class="switch-row">
+              <button class="switch" id="home-light-switch" aria-label="Ligar ou desligar iluminação" aria-pressed="false"><span class="switch-knob"></span></button>
+              <span id="home-light-label" class="visually-hidden">Desligado</span>
+            </div>
+          </section>
+          <section class="home-panel music-panel">
+            <div class="heading"><span class="heading-mark"></span><div><h1>Música</h1><p>Controle de música</p></div></div>
+            <div class="music-card" id="home-music-art"><span class="music-note">♫</span></div>
+            <p class="music-status" id="home-track-title">Nenhuma música adicionada</p>
+            <p class="music-hint" id="home-track-subtitle">Adicione músicas para começar a reproduzir</p>
+            <div class="mini-player">
+              <input class="file-input" id="home-audio-files" type="file" accept="audio/*" multiple>
+              <div class="mini-controls">
+                <button class="control" id="home-prev" aria-label="Faixa anterior">|◀</button>
+                <button class="control play" id="home-play" aria-label="Reproduzir ou pausar">▶</button>
+                <button class="control" id="home-next" aria-label="Próxima faixa">▶|</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="lighting">
+        <div class="heading page-heading"><span class="heading-mark"></span><div><h1>Iluminação</h1><p>Controle as luzes do ambiente</p></div></div>
+        <div class="simple-content">
+          <div class="room-grid">
+            <button class="room-card" id="room-card" aria-label="Ligar ou desligar luz do quarto" aria-pressed="false">
+              <div class="room-card-top">
+                <svg viewBox="0 0 100 120" aria-hidden="true">
+                  <g class="bulb-rays"><path d="M50 0v-5M18 15l-6-6M82 15l6-6M5 48H0M95 48h5"/></g>
+                  <path class="bulb-glass" d="M50 8C29 8 13 24 13 45c0 14 7 23 16 32 5 5 7 10 7 17h28c0-7 2-12 7-17 9-9 16-18 16-32C87 24 71 8 50 8Z"/>
+                  <path d="M37 101h26M40 109h20M44 117h12"/>
+                </svg>
+              </div>
+              <div class="room-card-bottom"><strong>Quarto</strong><span class="mini-switch" aria-hidden="true"></span></div>
+            </button>
+            <button class="room-card" id="room-card-sala" aria-label="Ligar ou desligar luz da sala" aria-pressed="false">
+              <div class="room-card-top">
+                <svg viewBox="0 0 100 120" aria-hidden="true">
+                  <g class="bulb-rays"><path d="M50 0v-5M18 15l-6-6M82 15l6-6M5 48H0M95 48h5"/></g>
+                  <path class="bulb-glass" d="M50 8C29 8 13 24 13 45c0 14 7 23 16 32 5 5 7 10 7 17h28c0-7 2-12 7-17 9-9 16-18 16-32C87 24 71 8 50 8Z"/>
+                  <path d="M37 101h26M40 109h20M44 117h12"/>
+                </svg>
+              </div>
+              <div class="room-card-bottom"><strong>Sala</strong><span class="mini-switch" aria-hidden="true"></span></div>
+            </button>
+            <button class="room-card" id="room-card-cozinha" aria-label="Ligar ou desligar luz da cozinha" aria-pressed="false">
+              <div class="room-card-top">
+                <svg viewBox="0 0 100 120" aria-hidden="true">
+                  <g class="bulb-rays"><path d="M50 0v-5M18 15l-6-6M82 15l6-6M5 48H0M95 48h5"/></g>
+                  <path class="bulb-glass" d="M50 8C29 8 13 24 13 45c0 14 7 23 16 32 5 5 7 10 7 17h28c0-7 2-12 7-17 9-9 16-18 16-32C87 24 71 8 50 8Z"/>
+                  <path d="M37 101h26M40 109h20M44 117h12"/>
+                </svg>
+              </div>
+              <div class="room-card-bottom"><strong>Cozinha</strong><span class="mini-switch" aria-hidden="true"></span></div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="music">
+        <div class="heading page-heading"><span class="heading-mark"></span><div><h1>Música</h1><p>Escolha uma faixa para reproduzir</p></div></div>
+        <div class="music-page-layout">
+          <div class="track-list" id="track-list">
+            <div class="empty-music" id="empty-playlist">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+              <strong>Nenhuma música adicionada</strong>
+              <span>Use o botão abaixo para escolher arquivos de áudio.</span>
+              <label class="add-music" for="page-audio-files">＋ Adicionar músicas</label>
+            </div>
+            <div class="playlist" id="playlist" hidden></div>
+            <input class="file-input" id="page-audio-files" type="file" accept="audio/*" multiple>
+          </div>
+          <div class="player-empty">
+            <div class="music-card"><span class="music-note">♫</span></div>
+            <p class="music-status" id="page-track-title">Nenhuma música selecionada</p>
+            <p class="music-hint" id="page-track-artist">Adicione músicas para começar</p>
+            <div class="seek-row">
+              <span id="current-time">00:00</span>
+              <input id="seek-bar" type="range" min="0" max="100" value="0" aria-label="Progresso da música">
+              <span id="total-time">00:00</span>
+            </div>
+            <div class="controls player-controls">
+              <button class="control" id="page-shuffle" aria-label="Ordem aleatória" title="Ordem aleatória">⤨</button>
+              <button class="control" id="page-prev" aria-label="Faixa anterior">|◀</button>
+              <button class="control play" id="page-play" aria-label="Reproduzir ou pausar">▶</button>
+              <button class="control" id="page-next" aria-label="Próxima faixa">▶|</button>
+              <button class="control" id="page-repeat" aria-label="Repetir faixa" title="Repetir faixa">↻</button>
+            </div>
+            <div class="volume-row"><span>Volume</span><input id="volume-bar" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volume"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="settings">
+        <div class="heading page-heading"><span class="heading-mark"></span><div><h1>Configurações</h1></div></div>
+        <div class="simple-content">
+          <div class="settings-grid">
+            <button class="setting-card" id="open-wifi" type="button" aria-label="Abrir Wi-Fi">
+              <svg viewBox="0 0 64 64"><path d="M5 23a42 42 0 0 1 54 0M14 33a28 28 0 0 1 36 0M23 43a14 14 0 0 1 18 0M31 53h2"/></svg>
+              <strong>Wi-Fi</strong>
+              <small>Configuração de rede</small>
+            </button>
+            <button class="setting-card" id="open-bluetooth" type="button" aria-label="Abrir Bluetooth">
+              <svg viewBox="0 0 64 64"><path d="M18 17l28 30-14 12V5l14 12-28 30"/></svg>
+              <strong>Bluetooth</strong>
+              <small>Dispositivos próximos</small>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="wifi">
+        <div class="heading page-heading"><span class="heading-mark"></span><div><h1>Wi-Fi</h1><p>Redes e conexão</p></div></div>
+        <div class="wifi-content">
+          <button class="back-settings" id="wifi-back" type="button">← Voltar às configurações</button>
+          <div class="wifi-status-card">
+            <div class="wifi-status-icon">⌁</div>
+            <div class="wifi-status-copy"><strong>Wi-Fi</strong><small id="wifi-state-label">Prévia de interface • navegador</small></div>
+          </div>
+          <div class="wifi-section-title"><strong>Redes disponíveis</strong><small>Exemplo visual — não é uma varredura real</small></div>
+          <div class="wifi-network-list">
+            <div class="wifi-network"><span class="wifi-network-icon">◔</span><div><strong>Rede de exemplo</strong><small>Segurança WPA/WPA2</small></div><span class="wifi-signal">▂▄▆</span></div>
+            <div class="wifi-network"><span class="wifi-network-icon">◔</span><div><strong>Wi-Fi convidado</strong><small>Segurança WPA2</small></div><span class="wifi-signal">▂▄</span></div>
+            <div class="wifi-network"><span class="wifi-network-icon">◔</span><div><strong>Rede pública</strong><small>Rede aberta</small></div><span class="wifi-signal">▂</span></div>
+          </div>
+          <p class="wifi-note">No Android, esta tela será conectada às APIs nativas para mostrar redes reais e permitir ações de conexão. No navegador do PC, os nomes acima são apenas demonstração.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="bluetooth">
+        <div class="heading page-heading"><span class="heading-mark"></span><div><h1>Bluetooth</h1><p>Dispositivos próximos</p></div></div>
+        <div class="wifi-content">
+          <button class="back-settings" id="bluetooth-back" type="button">← Voltar às configurações</button>
+          <div class="wifi-status-card">
+            <div class="wifi-status-icon">ᛒ</div>
+            <div class="wifi-status-copy"><strong>Bluetooth</strong><small>Prévia de interface • navegador</small></div>
+          </div>
+          <div class="wifi-section-title"><strong>Dispositivos disponíveis</strong><small>Exemplos visuais — não é uma busca real</small></div>
+          <div class="wifi-network-list">
+            <div class="wifi-network"><span class="wifi-network-icon">ᛒ</span><div><strong>Fone Bluetooth</strong><small>Áudio • exemplo</small></div><span class="wifi-signal">•••</span></div>
+            <div class="wifi-network"><span class="wifi-network-icon">ᛒ</span><div><strong>Caixa de som</strong><small>Áudio • exemplo</small></div><span class="wifi-signal">••</span></div>
+            <div class="wifi-network"><span class="wifi-network-icon">ᛒ</span><div><strong>Dispositivo próximo</strong><small>Bluetooth • exemplo</small></div><span class="wifi-signal">•</span></div>
+          </div>
+          <p class="wifi-note">No Android, esta tela será conectada às APIs nativas para localizar e parear dispositivos reais. No navegador do PC, os nomes são apenas demonstração.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
